@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Loan Calculator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+        .description {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .calculator-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        input[type="number"], input[type="text"] {
+            flex: 1;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+        .currency-prefix {
+            position: absolute;
+            left: 12px;
+            color: #666;
+            font-weight: 500;
+        }
+        input[type="text"] {
+            padding-left: 2rem;
+        }
+        .suffix {
+            margin-left: 0.5rem;
+            color: #666;
+            font-weight: 500;
+        }
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+        .results {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f8f8;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .main-result {
+            background: #0066cc;
+            color: white;
+        }
+        .main-result .label,
+        .main-result .value {
+            color: white;
+        }
+        .result-item .label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .result-item .value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .disclaimer {
+            padding: 1rem;
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 4px;
+            color: #856404;
+            margin-top: 1rem;
+        }
+        .disclaimer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Home Loan Calculator</h1>
+        <p class="description">Calculate your home loan repayments and see how much interest you'll pay over the life of your loan.</p>
+        
+        <div class="calculator-form">
+            <div class="form-group">
+                <label for="loanAmount">Loan Amount</label>
+                <div class="input-wrapper">
+                    <span class="currency-prefix">$</span>
+                    <input type="text" id="loanAmount" value="500,000" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="interestRate">Interest Rate</label>
+                <div class="input-wrapper">
+                    <input type="number" id="interestRate" value="6.5" step="0.1" min="0" max="20" />
+                    <span class="suffix">%</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="loanTerm">Loan Term</label>
+                <div class="input-wrapper">
+                    <input type="number" id="loanTerm" value="30" min="1" max="30" />
+                    <span class="suffix">years</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Repayment Frequency</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="frequency" value="weekly" />
+                        Weekly
+                    </label>
+                    <label>
+                        <input type="radio" name="frequency" value="fortnightly" checked />
+                        Fortnightly
+                    </label>
+                    <label>
+                        <input type="radio" name="frequency" value="monthly" />
+                        Monthly
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <h2>Your Results</h2>
+            <div class="result-item main-result">
+                <span class="label">Your <span id="frequencyText">fortnightly</span> repayments</span>
+                <span class="value" id="repaymentAmount">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="label">Total interest paid</span>
+                <span class="value" id="totalInterest">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="label">Total amount to repay</span>
+                <span class="value" id="totalRepayment">$0</span>
+            </div>
+            <div class="result-item">
+                <span class="label">Number of payments</span>
+                <span class="value" id="numberOfPayments">0</span>
+            </div>
+            
+            <div class="disclaimer">
+                <p><strong>Important:</strong> This calculator provides estimates only. Actual repayments may vary based on fees, charges, and interest rate changes. Contact your lender for a formal quote.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateLoanRepayments() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value.replace(/,/g, '')) || 0;
+            const interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+            const loanTermYears = parseInt(document.getElementById('loanTerm').value) || 0;
+            const frequency = document.querySelector('input[name="frequency"]:checked').value;
+            
+            if (loanAmount <= 0 || interestRate < 0 || loanTermYears <= 0) {
+                return;
+            }
+            
+            const annualRate = interestRate / 100;
+            let paymentsPerYear;
+            let periodRate;
+            
+            switch (frequency) {
+                case 'weekly':
+                    paymentsPerYear = 52;
+                    periodRate = annualRate / 52;
+                    break;
+                case 'fortnightly':
+                    paymentsPerYear = 26;
+                    periodRate = annualRate / 26;
+                    break;
+                case 'monthly':
+                    paymentsPerYear = 12;
+                    periodRate = annualRate / 12;
+                    break;
+            }
+            
+            const numberOfPayments = loanTermYears * paymentsPerYear;
+            let repaymentAmount;
+            
+            if (periodRate === 0) {
+                repaymentAmount = loanAmount / numberOfPayments;
+            } else {
+                const factor = Math.pow(1 + periodRate, numberOfPayments);
+                repaymentAmount = loanAmount * (periodRate * factor) / (factor - 1);
+            }
+            
+            const totalRepayment = repaymentAmount * numberOfPayments;
+            const totalInterest = totalRepayment - loanAmount;
+            
+            // Update results
+            document.getElementById('frequencyText').textContent = frequency;
+            document.getElementById('repaymentAmount').textContent = '$' + Math.round(repaymentAmount).toLocaleString();
+            document.getElementById('totalInterest').textContent = '$' + Math.round(totalInterest).toLocaleString();
+            document.getElementById('totalRepayment').textContent = '$' + Math.round(totalRepayment).toLocaleString();
+            document.getElementById('numberOfPayments').textContent = numberOfPayments.toLocaleString();
+            
+            document.getElementById('results').classList.add('show');
+        }
+        
+        // Format loan amount input
+        document.getElementById('loanAmount').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/,/g, '');
+            if (!isNaN(value) && value !== '') {
+                e.target.value = parseInt(value).toLocaleString();
+            }
+        });
+        
+        // Add event listeners
+        document.getElementById('loanAmount').addEventListener('change', calculateLoanRepayments);
+        document.getElementById('interestRate').addEventListener('input', calculateLoanRepayments);
+        document.getElementById('loanTerm').addEventListener('input', calculateLoanRepayments);
+        document.querySelectorAll('input[name="frequency"]').forEach(radio => {
+            radio.addEventListener('change', calculateLoanRepayments);
+        });
+        
+        // Initial calculation
+        calculateLoanRepayments();
+    </script>
+</body>
+</html>
