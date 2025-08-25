@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home loan calculator | BNZ</title>
+    <title>Home Loan Calculator</title>
     <style>
         body {
             font-family: BNZSans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -15,20 +15,20 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1.5rem;
         }
         h1 {
             color: #242424;
-            margin-bottom: 0.75rem;
-            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
         h2 {
             color: #242424;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         h3 {
             font-size: 1.125rem;
@@ -36,26 +36,26 @@
         }
         .description {
             color: #4d4d4d;
-            margin-bottom: 2rem;
-            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
         .calculator-form {
             background: white;
-            padding: 2.5rem;
+            padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             border: 1px solid #e5e5e5;
         }
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
         }
         label {
             display: block;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             color: #242424;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         .input-wrapper {
             position: relative;
@@ -64,8 +64,8 @@
         }
         input[type="number"], input[type="text"] {
             flex: 1;
-            padding: 0.875rem 1rem;
-            font-size: 1rem;
+            padding: 0.625rem 0.875rem;
+            font-size: 0.95rem;
             border: 2px solid #cccccc;
             border-radius: 8px;
             transition: border-color 0.2s;
@@ -112,7 +112,7 @@
         .results {
             background: white;
             border-radius: 12px;
-            padding: 2.5rem;
+            padding: 1.5rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             display: none;
             border: 1px solid #e5e5e5;
@@ -124,15 +124,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.25rem;
+            padding: 1rem;
             background: #f7f7f7;
             border-radius: 8px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
         .main-result {
             background: #00588e;
             color: white;
-            padding: 1.5rem;
+            padding: 1.25rem;
         }
         .main-result .label,
         .main-result .value {
@@ -143,22 +143,22 @@
             font-size: 1rem;
         }
         .result-item .value {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #242424;
         }
         .main-result .value {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         .disclaimer {
-            padding: 1.25rem;
+            padding: 1rem;
             background: #f7f7f7;
             border: 1px solid #e5e5e5;
             border-radius: 8px;
             color: #4d4d4d;
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            line-height: 1.5;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            line-height: 1.4;
         }
         .disclaimer p {
             margin: 0;
@@ -254,13 +254,13 @@
             </div>
             
             <div class="disclaimer">
-                <p>This home loan calculator is intended as a guide only. It is not intended to provide advice, and is not a quote or an offer of finance by BNZ.</p>
+                <p>This home loan calculator is intended as a guide only. It is not intended to provide financial advice.</p>
             </div>
             
-            <div class="disclaimer" style="margin-top: 1rem; background: #f0f8ff; border-color: #b8daff; color: #004085;">
-                <h3 style="margin: 0 0 0.5rem 0; font-size: 1rem;">How this calculator works</h3>
-                <p style="margin-bottom: 0.5rem;">This calculator assumes:</p>
-                <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.9rem;">
+            <div class="disclaimer" style="margin-top: 0.75rem; background: #f0f8ff; border-color: #b8daff; color: #004085;">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">How this calculator works</h3>
+                <p style="margin-bottom: 0.5rem; font-size: 0.8rem;">This calculator assumes:</p>
+                <ul style="margin: 0; padding-left: 1.5rem; font-size: 0.75rem;">
                     <li>You won't make any changes to your loan amount</li>
                     <li>You won't make any additional lump sum payments during your loan term</li>
                     <li>You'll make all your payments on time</li>
@@ -268,10 +268,6 @@
                     <li>Interest is calculated daily</li>
                 </ul>
             </div>
-            
-            <button class="apply-button" onclick="window.open('https://www.bnz.co.nz/personal-banking/home-loans/apply', '_blank')">
-                Apply for a BNZ home loan
-            </button>
         </div>
     </div>
 
